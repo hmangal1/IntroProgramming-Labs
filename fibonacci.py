@@ -10,12 +10,12 @@ def main():
         print("The",n,"term of the fibonacci sequence is",prevNum)
     if (n==3):
         print("The",n,"term of the fibonacci sequence is",currentNum)
-    for i in range(n-3):
-        if(n>3):
+    if (n>3):
+        for i in range(n-3):
             dubPrevNum=prevNum
             prevNum=currentNum
             currentNum=dubPrevNum+prevNum
-    print("The",n,"term of the fibonacci sequence is",currentNum)
+        print("The",n,"term of the fibonacci sequence is",currentNum)
     
 main()
         
