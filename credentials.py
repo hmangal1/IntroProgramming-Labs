@@ -14,7 +14,7 @@ def getNames():
     # get user's first and last names
     first = input("Enter your first name: ")
     last = input("Enter your last name: ")
-    names = [first, last]
+    names = [first.lower(), last.lower()]
     return names
 def buildUsername():
     names = getNames()
@@ -22,10 +22,19 @@ def buildUsername():
     uname = names[0] + "."+ names[1]
     return uname
 def checkPassword(string):
-    
-    while (len(string))<8:
+    isStrong=passwordStrength(string)
+    while isStrong==False:
         print("Fool of a Took! That password is feeble!")
         string = input("Create a new password: ")
-    print("The force is strong in this one…")
+        isStrong=passwordStrength(string)
+        if isStrong==True:
+            print("The force is strong in this one…")
     return string
+def passwordStrength(string):
+    while (len(string))<8:
+        return False
+    if (any(x.isupper() for x in string) and any(x.islower() for x in string)):
+        return True
+    else:
+        return False
 main()
